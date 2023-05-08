@@ -169,6 +169,56 @@ Name: en-IE-ConnorNeural
 Gender: Male
 ```
 
+## whisper.cpp
+You need follow the whisper.cpp to make it works
+- https://github.com/ggerganov/whisper.cpp
+
+```shell
+git clone git@github.com:ggerganov/whisper.cpp.git
+cd whisper.cpp
+bash ./models/download-ggml-model.sh base.en\n
+make
+./main -m models/ggml-base.en.bin -f samples/jfk.wav
+make stream
+./stream -m ./models/ggml-base.en.bin -t 8 --step 500 --length 5000
+
+init: found 2 capture devices:
+init:    - Capture device #0: 'MacBook Pro Microphone'
+init:    - Capture device #1: 'Microsoft Teams Audio'
+init: attempt to open default capture device ...
+init: obtained spec for input device (SDL Id = 2):
+init:     - sample rate:       16000
+init:     - format:            33056 (required: 33056)
+init:     - channels:          1 (required: 1)
+init:     - samples per frame: 1024
+whisper_init_from_file_no_state: loading model from './models/ggml-base.en.bin'
+whisper_model_load: loading model
+whisper_model_load: n_vocab       = 51864
+whisper_model_load: n_audio_ctx   = 1500
+whisper_model_load: n_audio_state = 512
+whisper_model_load: n_audio_head  = 8
+whisper_model_load: n_audio_layer = 6
+whisper_model_load: n_text_ctx    = 448
+whisper_model_load: n_text_state  = 512
+whisper_model_load: n_text_head   = 8
+whisper_model_load: n_text_layer  = 6
+whisper_model_load: n_mels        = 80
+whisper_model_load: ftype         = 1
+whisper_model_load: type          = 2
+whisper_model_load: mem required  =  310.00 MB (+    6.00 MB per decoder)
+whisper_model_load: adding 1607 extra tokens
+whisper_model_load: model ctx     =  140.60 MB
+whisper_model_load: model size    =  140.54 MB
+whisper_init_state: kv self size  =    5.25 MB
+whisper_init_state: kv cross size =   17.58 MB
+
+main: processing 8000 samples (step = 0.5 sec / len = 5.0 sec / keep = 0.2 sec), 8 threads, lang = en, task = transcribe, timestamps = 0 ...
+main: n_new_line = 9, no_context = 1
+
+ Okay, it's so great. The vispo is running over.
+ very well on my computer.
+ [BLANK_AUDIO]
+```
 
 
 ## Llama Integration

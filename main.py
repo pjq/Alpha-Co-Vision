@@ -9,6 +9,7 @@ from caption_generation import generate_caption
 from response_generation import generate_response
 import config
 import edge_tts_playback
+import whisper_cpp
 
 # create VideoCapture object for camera feed
 cap = cv2.VideoCapture(0)
@@ -121,6 +122,7 @@ def setup_config(config_file):
     print("Enable enable_mps:", settings.enable_mps)
     print("openai_api_base_url:", settings.openai_api_base_url)
     print("blip_model:", settings.blip_model)
+    print("whisper_cpp_path:", settings.whisper_cpp_path)
 
 
 if __name__ == '__main__':
@@ -130,4 +132,5 @@ if __name__ == '__main__':
     setup_config(args.config)
     caption_generation.init()
 
+    whisper_cpp.start_whispercpp()
     main_loop()

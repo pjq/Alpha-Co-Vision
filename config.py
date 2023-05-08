@@ -32,5 +32,6 @@ def load_config(config_file):
     settings.edge_tts_voice = config_data["edge_tts_voice"]
     settings.openai_api_base_url = config_data["openai_api_base_url"]
     settings.blip_model = config_data["blip_model"]
+    settings.whisper_cpp_path = config_data["whisper_cpp_path"]
 
     return settings
